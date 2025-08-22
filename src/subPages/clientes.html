@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - Nóbrega Confecções</title>
+    <link rel="stylesheet" href="../css/clientes.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo-nobrega.svg">
+</head>
+<body>
+    <div class="clientes-container">
+        <!-- Cabeçalho da Página -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>Gestão de Clientes</h1>
+                <p>Gerencie clientes e acompanhe o histórico de pedidos</p>
+            </div>
+            <button class="btn-primary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Novo Cliente
+            </button>
+        </div>
+
+        <!-- Navegação por Abas -->
+        <div class="tabs-navigation">
+            <button class="tab-button active" data-tab="clientes">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Clientes
+            </button>
+            <button class="tab-button" data-tab="historico">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11H15M9 15H15M17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H12.586C12.8512 3.00006 13.1055 3.10545 13.293 3.293L18.707 8.707C18.8946 8.89449 18.9999 9.14881 19 9.414V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Histórico de Pedidos
+            </button>
+        </div>
+
+        <!-- Aba Clientes -->
+        <div class="tab-content active" id="clientes-tab">
+            <!-- Filtros e Busca -->
+            <div class="controls-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input type="text" placeholder="Pesquisar clientes...">
+                    </div>
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active">Todos</button>
+                    <button class="filter-btn">Ativos</button>
+                    <button class="filter-btn">Inativos</button>
+                </div>
+            </div>
+
+            <!-- Tabela de Clientes -->
+            <div class="table-container">
+                <table class="clientes-table">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Contato</th>
+                            <th>Localização</th>
+                            <th>Pedidos</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Cliente 1 -->
+                        <tr>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">MS</div>
+                                    <div class="cliente-details">
+                                        <h4>Maria Silva Santos</h4>
+                                        <span>Cliente VIP</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="contato-info">
+                                    <span>(11) 99999-9999</span>
+                                    <span>maria@email.com</span>
+                                </div>
+                            </td>
+                            <td>São Paulo, SP</td>
+                            <td>
+                                <span class="pedidos-count">12 pedidos</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-ativo">Ativo</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-delete" title="Excluir">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Cliente 2 -->
+                        <tr>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">JO</div>
+                                    <div class="cliente-details">
+                                        <h4>João Oliveira Costa</h4>
+                                        <span>Cliente Regular</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="contato-info">
+                                    <span>(21) 88888-8888</span>
+                                    <span>joao@email.com</span>
+                                </div>
+                            </td>
+                            <td>Rio de Janeiro, RJ</td>
+                            <td>
+                                <span class="pedidos-count">8 pedidos</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-ativo">Ativo</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-delete" title="Excluir">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Cliente 3 -->
+                        <tr>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">AP</div>
+                                    <div class="cliente-details">
+                                        <h4>Ana Paula Ferreira</h4>
+                                        <span>Cliente VIP</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="contato-info">
+                                    <span>(31) 77777-7777</span>
+                                    <span>ana@email.com</span>
+                                </div>
+                            </td>
+                            <td>Belo Horizonte, MG</td>
+                            <td>
+                                <span class="pedidos-count">10 pedidos</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-ativo">Ativo</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-delete" title="Excluir">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Cliente 4 -->
+                        <tr>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">CE</div>
+                                    <div class="cliente-details">
+                                        <h4>Carlos Eduardo Lima</h4>
+                                        <span>Cliente Regular</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="contato-info">
+                                    <span>(41) 66666-6666</span>
+                                    <span>carlos@email.com</span>
+                                </div>
+                            </td>
+                            <td>Curitiba, PR</td>
+                            <td>
+                                <span class="pedidos-count">5 pedidos</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-inativo">Inativo</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-delete" title="Excluir">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Cliente 5 -->
+                        <tr>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">FR</div>
+                                    <div class="cliente-details">
+                                        <h4>Fernanda Rodrigues</h4>
+                                        <span>Cliente Regular</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="contato-info">
+                                    <span>(51) 55555-5555</span>
+                                    <span>fernanda@email.com</span>
+                                </div>
+                            </td>
+                            <td>Porto Alegre, RS</td>
+                            <td>
+                                <span class="pedidos-count">8 pedidos</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-ativo">Ativo</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-delete" title="Excluir">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Aba Histórico de Pedidos -->
+        <div class="tab-content" id="historico-tab">
+            <div class="controls-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input type="text" placeholder="Pesquisar pedidos...">
+                    </div>
+                </div>
+
+                <div class="historico-filters">
+                    <button class="filter-dropdown">
+                        <span>Período</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="filter-dropdown">
+                        <span>Status</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Conteúdo do histórico -->
+            <div class="table-container">
+                <table class="clientes-table">
+                    <thead>
+                        <tr>
+                            <th>Pedido</th>
+                            <th>Cliente</th>
+                            <th>Data</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Pedido 1 -->
+                        <tr>
+                            <td>
+                                <div class="pedido-info">
+                                    <h4>#PED-2024-001</h4>
+                                    <span>Camisa Polo Personalizada</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">MS</div>
+                                    <div class="cliente-details">
+                                        <h4>Maria Silva Santos</h4>
+                                        <span>Cliente VIP</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>15/01/2024</td>
+                            <td>
+                                <span class="valor-pedido">R$ 450,00</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-finalizado">Finalizado</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view" title="Visualizar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Pedido 2 -->
+                        <tr>
+                            <td>
+                                <div class="pedido-info">
+                                    <h4>#PED-2024-002</h4>
+                                    <span>Uniforme Escolar Completo</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">JO</div>
+                                    <div class="cliente-details">
+                                        <h4>João Oliveira Costa</h4>
+                                        <span>Cliente Regular</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>18/01/2024</td>
+                            <td>
+                                <span class="valor-pedido">R$ 320,00</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-em-andamento">Em andamento</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view" title="Visualizar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Pedido 3 -->
+                        <tr>
+                            <td>
+                                <div class="pedido-info">
+                                    <h4>#PED-2024-003</h4>
+                                    <span>Vestido de Festa</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">AP</div>
+                                    <div class="cliente-details">
+                                        <h4>Ana Paula Ferreira</h4>
+                                        <span>Cliente VIP</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>22/01/2024</td>
+                            <td>
+                                <span class="valor-pedido">R$ 850,00</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-finalizado">Finalizado</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view" title="Visualizar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Pedido 4 -->
+                        <tr>
+                            <td>
+                                <div class="pedido-info">
+                                    <h4>#PED-2024-004</h4>
+                                    <span>Terno Executivo</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">CE</div>
+                                    <div class="cliente-details">
+                                        <h4>Carlos Eduardo Lima</h4>
+                                        <span>Cliente Regular</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>25/01/2024</td>
+                            <td>
+                                <span class="valor-pedido">R$ 1.200,00</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-cancelado">Cancelado</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view" title="Visualizar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Pedido 5 -->
+                        <tr>
+                            <td>
+                                <div class="pedido-info">
+                                    <h4>#PED-2024-005</h4>
+                                    <span>Blusa Bordada</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">FR</div>
+                                    <div class="cliente-details">
+                                        <h4>Fernanda Rodrigues</h4>
+                                        <span>Cliente Regular</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>28/01/2024</td>
+                            <td>
+                                <span class="valor-pedido">R$ 280,00</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-em-andamento">Em andamento</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view" title="Visualizar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Pedido 6 -->
+                        <tr>
+                            <td>
+                                <div class="pedido-info">
+                                    <h4>#PED-2024-006</h4>
+                                    <span>Conjunto Infantil</span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cliente-info">
+                                    <div class="cliente-avatar">MS</div>
+                                    <div class="cliente-details">
+                                        <h4>Maria Silva Santos</h4>
+                                        <span>Cliente VIP</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>02/02/2024</td>
+                            <td>
+                                <span class="valor-pedido">R$ 180,00</span>
+                            </td>
+                            <td>
+                                <span class="status-badge status-finalizado">Finalizado</span>
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view" title="Visualizar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                        </svg>
+                                    </button>
+                                    <button class="btn-edit" title="Editar">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M18.5 2.50023C18.8978 2.10243 19.4374 1.87891 20 1.87891C20.5626 1.87891 21.1022 2.10243 21.5 2.50023C21.8978 2.89804 22.1213 3.43762 22.1213 4.00023C22.1213 4.56284 21.8978 5.10243 21.5 5.50023L12 15.0002L8 16.0002L9 12.0002L18.5 2.50023Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navegação por abas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding content
+                    button.classList.add('active');
+                    document.getElementById(targetTab + '-tab').classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

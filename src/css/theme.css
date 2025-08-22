@@ -1,0 +1,310 @@
+/* Theme System - Nóbrega Confecções */
+/* CSS Custom Properties for Light/Dark Theme Support */
+
+:root {
+  /* Light Theme Colors (Default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #F8FAFC;
+  --bg-elevated: #ffffff;
+  --bg-sidebar: #ffffff;
+  
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  --text-sidebar: #7C8DB5;
+  
+  --border-primary: #E2E8F0;
+  --border-secondary: #CBD5E1;
+  --border-sidebar: #d9ddeb;
+  
+  --purple-primary: #4A0060;
+  --purple-secondary: #8c30f5;
+  --purple-tertiary: #7422cb;
+  --purple-light: #37065a;
+  
+  --success-primary: #16A34A;
+  --success-bg: #DCFCE7;
+  --success-text: #166534;
+  
+  --error-primary: #DC2626;
+  --error-bg: #FEE2E2;
+  --error-text: #991B1B;
+  
+  --warning-primary: #F59E0B;
+  --warning-bg: #FEF3C7;
+  --warning-text: #92400E;
+  
+  --info-primary: #3B82F6;
+  --info-bg: #DBEAFE;
+  --info-text: #1E40AF;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"] {
+  /* Dark Theme Variables */
+  --bg-primary: #1A1A1A;
+  --bg-secondary: #1F1F1F;
+  --bg-elevated: #1F1F1F;
+  --text-primary: #F1F5F9;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --border-primary: #333333;
+  --border-secondary: #404040;
+  --purple-primary: #8B5CF6;
+  --purple-secondary: #A78BFA;
+  --purple-hover: #7C3AED;
+  --success-bg: #064E3B;
+  --success-text: #10B981;
+  --error-bg: #7F1D1D;
+  --error-text: #F87171;
+  --warning-bg: #78350F;
+  --warning-text: #FBBF24;
+  --info-bg: #1E3A8A;
+  --info-text: #60A5FA;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* Força cores de texto em modo escuro para elementos comuns */
+[data-theme="dark"] body,
+[data-theme="dark"] .content,
+[data-theme="dark"] .main-content,
+[data-theme="dark"] div,
+[data-theme="dark"] span,
+[data-theme="dark"] p,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] label,
+[data-theme="dark"] td,
+[data-theme="dark"] th {
+    color: var(--text-primary) !important;
+}
+
+/* Força backgrounds em modo escuro */
+[data-theme="dark"] body,
+[data-theme="dark"] .content,
+[data-theme="dark"] .main-content {
+    background-color: var(--bg-primary) !important;
+}
+
+/* Força cores para cards e containers */
+[data-theme="dark"] .card,
+[data-theme="dark"] .data-box,
+[data-theme="dark"] .grafico-box,
+[data-theme="dark"] .container,
+[data-theme="dark"] .box,
+[data-theme="dark"] .panel {
+    background-color: #1F1F1F !important;
+    color: var(--text-primary) !important;
+    border-color: #333333 !important;
+}
+
+/* Força cores para inputs e selects */
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea,
+[data-theme="dark"] .form-control {
+    background-color: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-primary) !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* Força cores para tabelas */
+[data-theme="dark"] table,
+[data-theme="dark"] .table {
+    background-color: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] table th,
+[data-theme="dark"] .table th {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] table td,
+[data-theme="dark"] .table td {
+    color: var(--text-primary) !important;
+    border-color: var(--border-primary) !important;
+}
+
+/* Força cores para botões */
+[data-theme="dark"] .btn:not(.btn-primary):not(.btn-danger):not(.btn-success) {
+    background-color: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--border-primary) !important;
+}
+
+/* Força cores para modais */
+[data-theme="dark"] .modal,
+[data-theme="dark"] .modal-content,
+[data-theme="dark"] .modal-dialog {
+    background-color: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Força cores para sidebar e navegação */
+[data-theme="dark"] .sidebar,
+[data-theme="dark"] .menu,
+[data-theme="dark"] .nav {
+    background-color: var(--bg-elevated) !important;
+}
+
+[data-theme="dark"] .sidebar a,
+[data-theme="dark"] .menu a,
+[data-theme="dark"] .nav a {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .sidebar a:hover,
+[data-theme="dark"] .menu a:hover,
+[data-theme="dark"] .nav a:hover {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-secondary) !important;
+}
+
+/* Remove sombras desnecessárias em modo escuro */
+[data-theme="dark"] .shadow,
+[data-theme="dark"] .card-shadow,
+[data-theme="dark"] .box-shadow {
+    box-shadow: none !important;
+}
+
+/* Garante que elementos inline não herdem cores incorretas */
+[data-theme="dark"] * {
+    color: inherit;
+}
+
+/* Força cores específicas para elementos que podem ter estilos inline */
+[data-theme="dark"] [style*="color"] {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] [style*="background"] {
+    background-color: var(--bg-elevated) !important;
+}
+
+/* Remove rounded borders from icons */
+[data-theme="dark"] .data-icon,
+[data-theme="dark"] .icon {
+    border-radius: 0 !important;
+    background-color: var(--bg-secondary) !important;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: var(--purple-primary);
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+}
+
+#theme-toggle:hover {
+  background: var(--purple-tertiary);
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(74, 0, 96, 0.3);
+}
+
+#theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  transition: all var(--transition-fast);
+  position: absolute;
+}
+
+#theme-toggle .sun-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.8);
+}
+
+#theme-toggle .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] #theme-toggle .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+[data-theme="dark"] #theme-toggle .moon-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.8);
+}
+
+/* Theme Transition */
+* {
+  transition: background-color var(--transition-fast), 
+              color var(--transition-fast), 
+              border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+/* Login Page Theme Support */
+.login-container {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-primary);
+}
+
+.login-container h2 {
+  color: var(--text-primary) !important;
+}
+
+.login-container label {
+  color: var(--text-primary) !important;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  background: var(--bg-primary) !important;
+  border-color: var(--border-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.login-container input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #theme-toggle {
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  #theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+}

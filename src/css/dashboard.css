@@ -1,0 +1,238 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*------MAIN DASHBOARD-----*/
+
+main {
+  padding: 1rem;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  overflow-x: hidden;
+}
+
+/*------USER SECTION-----*/
+
+.User {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.name-user h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.UserInfos svg {
+  color: var(--text-secondary);
+}
+
+/*------DASHBOARD CARDS-----*/
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid var(--accent-color);
+  min-width: 0;
+}
+
+.card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-header div:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem 0;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-header p {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin: 0;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Poppins', sans-serif;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+  background: #4A0060;
+  border-radius: 6px;
+  color: white;
+  background-color: red;
+}
+
+.icon svg {
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Light theme icon visibility fix */
+[data-theme="light"] .icon {
+  background: var(--bg-elevated);
+  color: var(--accent-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Dark theme icon styling */
+[data-theme="dark"] .icon {
+  background: var(--accent-color);
+  color: white;
+}
+
+/* Fallback for when theme is not set */
+.icon {
+  background: #4A0060;
+  color: white;
+}
+
+/*------CHARTS SECTION-----*/
+
+.graficos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.grafico-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.grafico-box h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-family: 'Poppins', sans-serif;
+}
+
+#chart, #donut-chart {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .graficos-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  
+  .card {
+    padding: 0.8rem;
+  }
+  
+  .card-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .grafico-box {
+    padding: 1rem;
+    min-height: 350px;
+  }
+  
+  main {
+    padding: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Remove old styles */
+.card-footer {
+  display: none;
+}
+
+/* Remove white circle from chart container */
+.chart-container {
+    background: transparent !important;
+    border: none !important;
+}
+
+.chart-container canvas {
+    background: transparent !important;
+}
+
+/* Ensure chart backgrounds are transparent */
+#statusChart,
+#vendas-chart,
+.apexcharts-canvas {
+    background: transparent !important;
+}
+
+.apexcharts-svg {
+    background: transparent !important;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nóbrega Confecções</title>
+    <link rel="stylesheet" href="./src/css/theme.css">
+    <link rel="stylesheet" href="./login.css">
+    <link rel="icon" type="image/x-icon" href="./src/img/logo-nobrega.svg">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logoContainer">
+            <img src="./src/img/logo-nobrega.svg" alt="Logo" class="logo">
+        </div>
+        <h2>Nóbrega - Login</h2>
+        <label for="username">Usuário</label>
+        <input type="text" id="username" placeholder="Digite seu usuário" required>
+        <label for="password">Senha</label>
+        <div class="password-container">
+            <input type="password" id="password" placeholder="Digite sua senha" required>
+            <span class="toggle-password" id="togglePassword">
+                <img src="./src/img/eye.svg" alt="Mostrar/Ocultar senha" width="20" height="20">
+            </span>
+        </div>
+        <button id="loginBTN" class="btn">Entrar</button>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <div class="modal-icon"></div>
+                <h3>Erro de Login</h3>
+            </div>
+            <p id="modalMessage">Usuário ou senha inválidos. Verifique suas credenciais e tente novamente.</p>
+            <button class="modal-button" id="modalCloseBtn">Tentar Novamente</button>
+        </div>
+    </div>
+
+    <script src="./login.js"></script>
+</body>
+</html>

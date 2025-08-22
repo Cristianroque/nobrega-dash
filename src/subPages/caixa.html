@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa - Nóbrega Confecções</title>
+    <link rel="stylesheet" href="../css/caixa.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo-nobrega.svg">
+</head>
+<body>
+    <div class="caixa-container">
+        <div class="page-header">
+            <div class="header-content">
+                <h1>Controle de Caixa</h1>
+                <p>Gestão financeira e fluxo de caixa da Nóbrega Confecções</p>
+            </div>
+            <button class="btn-primary" onclick="novaTransacao()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Nova Transação
+            </button>
+        </div>
+
+        <div class="filters-section">
+            <div class="filters-row">
+                <div class="search-box">
+                    <input type="text" id="searchTransacoes" placeholder="Buscar transações...">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <select id="filterTipo" class="filter-select">
+                    <option value="">Todos os Tipos</option>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+                <select id="filterCategoria" class="filter-select">
+                    <option value="">Todas as Categorias</option>
+                    <option value="vendas">Vendas</option>
+                    <option value="fornecedores">Fornecedores</option>
+                    <option value="funcionarios">Funcionários</option>
+                    <option value="despesas">Despesas</option>
+                </select>
+                <input type="date" id="filterData" class="filter-date">
+            </div>
+        </div>
+
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="summary-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 1V23M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6312 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6312 13.6815 18 14.5717 18 15.5C18 16.4283 17.6312 17.3185 16.9749 17.9749C16.3185 18.6312 15.4283 19 14.5 19H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="summary-info">
+                    <h3>R$ 45.320,50</h3>
+                    <p>Saldo Atual</p>
+                </div>
+            </div>
+            <div class="summary-card positive">
+                <div class="summary-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="summary-info">
+                    <h3>R$ 28.450,00</h3>
+                    <p>Entradas do Mês</p>
+                </div>
+            </div>
+            <div class="summary-card negative">
+                <div class="summary-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 7L7 17M7 17H17M7 17V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="summary-info">
+                    <h3>R$ 15.230,00</h3>
+                    <p>Saídas do Mês</p>
+                </div>
+            </div>
+            <div class="summary-card neutral">
+                <div class="summary-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 21V5C16 4.46957 15.7893 3.96086 15.4142 3.58579C15.0391 3.21071 14.5304 3 14 3H10C9.46957 3 8.96086 3.21071 8.58579 3.58579C8.21071 3.96086 8 4.46957 8 5V21L12 18L16 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="summary-info">
+                    <h3>R$ 13.220,00</h3>
+                    <p>Lucro do Mês</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs de navegação -->
+        <div class="caixa-tabs">
+            <div class="tab active" onclick="showCaixaTab('transacoes')">Transações</div>
+            <div class="tab" onclick="showCaixaTab('relatorios')">Relatórios</div>
+            <div class="tab" onclick="showCaixaTab('contas')">Contas a Pagar/Receber</div>
+        </div>
+
+        <!-- Conteúdo das abas -->
+        <div class="caixa-content">
+            <!-- Aba Transações -->
+            <div id="transacoes" class="tab-content active">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h3>Transações Recentes</h3>
+                        <div class="section-actions">
+                            <button class="btn-secondary btn-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15M7 10L12 15L17 10M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Exportar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Descrição</th>
+                                    <th>Tipo</th>
+                                    <th>Valor</th>
+                                    <th>Responsável</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28/03/2024</td>
+                                    <td>Venda - Pedido #001</td>
+                                    <td><span class="type-badge entrada">ENTRADA</span></td>
+                                    <td class="value positive">+ R$ 1.250,00</td>
+                                    <td>João Vendedor</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Visualizar">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn-icon" title="Editar">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn-icon" title="Excluir">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M3 6H5H21M8 6V4C8 3.44772 8.44772 3 9 3H15C15.5523 3 16 3.44772 16 4V6M19 6V20C19 21.1046 18.1046 22 17 22H7C5.89543 22 5 21.1046 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>27/03/2024</td>
+                                    <td>Pagamento Fornecedor - Tecidos</td>
+                                    <td><span class="type-badge saida">SAÍDA</span></td>
+                                    <td class="value negative">- R$ 850,00</td>
+                                    <td>Maria Supervisora</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Visualizar">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn-icon" title="Editar">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn-icon" title="Excluir">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M3 6H5H21M8 6V4C8 3.44772 8.44772 3 9 3H15C15.5523 3 16 3.44772 16 4V6M19 6V20C19 21.1046 18.1046 22 17 22H7C5.89543 22 5 21.1046 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>26/03/2024</td>
+                                    <td>Venda - Pedido #002</td>
+                                    <td><span class="type-badge entrada">ENTRADA</span></td>
+                                    <td class="value positive">+ R$ 3.500,00</td>
+                                    <td>Carlos Vendedor</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Visualizar">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn-icon" title="Editar">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn-icon" title="Excluir">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M3 6H5H21M8 6V4C8 3.44772 8.44772 3 9 3H15C15.5523 3 16 3.44772 16 4V6M19 6V20C19 21.1046 18.1046 22 17 22H7C5.89543 22 5 21.1046 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>25/03/2024</td>
+                                    <td>Salário - Março 2024</td>
+                                    <td><span class="type-badge saida">SAÍDA</span></td>
+                                    <td class="value negative">- R$ 12.500,00</td>
+                                    <td>Administrador</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="btn-icon" title="Visualizar">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn-icon" title="Editar">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn-icon" title="Excluir">
+                                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M3 6H5H21M8 6V4C8 3.44772 8.44772 3 9 3H15C15.5523 3 16 3.44772 16 4V6M19 6V20C19 21.1046 18.1046 22 17 22H7C5.89543 22 5 21.1046 5 20V6H19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba Relatórios -->
+            <div id="relatorios" class="tab-content">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h3>Relatórios Financeiros</h3>
+                        <div class="section-actions">
+                            <button class="btn-secondary btn-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15M7 10L12 15L17 10M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Gerar Relatório
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="reports-grid">
+                        <div class="report-card">
+                            <div class="report-header">
+                                <div class="report-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 3V21H21M7 16L12 11L16 15L21 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="report-info">
+                                    <h4>Fluxo de Caixa Mensal</h4>
+                                    <p>Análise completa do período</p>
+                                </div>
+                            </div>
+                            <div class="report-stats">
+                                <div class="stat-row">
+                                    <span class="stat-label">Entradas:</span>
+                                    <span class="stat-value positive">R$ 28.450,00</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Saídas:</span>
+                                    <span class="stat-value negative">R$ 15.230,00</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Saldo:</span>
+                                    <span class="stat-value">R$ 13.220,00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="report-card">
+                            <div class="report-header">
+                                <div class="report-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="report-info">
+                                    <h4>Receitas por Categoria</h4>
+                                    <p>Distribuição de receitas</p>
+                                </div>
+                            </div>
+                            <div class="report-stats">
+                                <div class="stat-row">
+                                    <span class="stat-label">Vendas:</span>
+                                    <span class="stat-value">R$ 25.400,00</span>
+                                    <span class="stat-percent">89%</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Serviços:</span>
+                                    <span class="stat-value">R$ 3.050,00</span>
+                                    <span class="stat-percent">11%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba Contas -->
+            <div id="contas" class="tab-content">
+                <div class="content-section">
+                    <div class="section-header">
+                        <h3>Contas a Pagar e Receber</h3>
+                        <div class="section-actions">
+                            <button class="btn-secondary btn-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Nova Conta
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="accounts-grid">
+                        <div class="accounts-section">
+                            <div class="accounts-header">
+                                <h4>Contas a Receber</h4>
+                                <span class="accounts-total positive">R$ 3.950,00</span>
+                            </div>
+                            <div class="accounts-list">
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <h5>Cliente João Silva</h5>
+                                        <p>Pedido #005 • Vencimento: 30/03/2024</p>
+                                    </div>
+                                    <div class="account-amount">
+                                        <span class="amount">R$ 2.150,00</span>
+                                        <span class="status-badge status-pendente">Pendente</span>
+                                    </div>
+                                </div>
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <h5>Cliente Maria Santos</h5>
+                                        <p>Pedido #006 • Vencimento: 02/04/2024</p>
+                                    </div>
+                                    <div class="account-amount">
+                                        <span class="amount">R$ 1.800,00</span>
+                                        <span class="status-badge status-pendente">Pendente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accounts-section">
+                            <div class="accounts-header">
+                                <h4>Contas a Pagar</h4>
+                                <span class="accounts-total negative">R$ 3.650,00</span>
+                            </div>
+                            <div class="accounts-list">
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <h5>Fornecedor ABC Tecidos</h5>
+                                        <p>Fatura #123 • Vencimento: 01/04/2024</p>
+                                    </div>
+                                    <div class="account-amount">
+                                        <span class="amount">R$ 3.200,00</span>
+                                        <span class="status-badge status-vencendo">Vencendo</span>
+                                    </div>
+                                </div>
+                                <div class="account-item">
+                                    <div class="account-info">
+                                        <h5>Energia Elétrica</h5>
+                                        <p>Conta de Março • Vencimento: 05/04/2024</p>
+                                    </div>
+                                    <div class="account-amount">
+                                        <span class="amount">R$ 450,00</span>
+                                        <span class="status-badge status-pendente">Pendente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/caixa.js"></script>
+</body>
+</html>

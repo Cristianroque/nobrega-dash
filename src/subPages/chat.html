@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Nóbrega Confecções</title>
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo-nobrega.svg">
+</head>
+<body>
+    <div class="chat-container-wrapper">
+        <div class="page-header">
+            <div class="header-content">
+                <h1>Chat Interno</h1>
+                <p>Comunicação em tempo real da equipe Nóbrega</p>
+            </div>
+        </div>
+
+    <div class="chat-container">
+        <div class="chat-sidebar">
+            <div class="chat-search">
+                <input type="text" placeholder="Buscar conversas...">
+            </div>
+            
+            <div class="chat-list">
+                <div class="chat-item active">
+                    <div class="chat-avatar">EQ</div>
+                    <div class="chat-info">
+                        <h4>Equipe Geral</h4>
+                        <p>João: Pedido #001 finalizado</p>
+                        <span class="chat-time">14:30</span>
+                        <span class="chat-unread">3</span>
+                    </div>
+                </div>
+                
+                <div class="chat-item">
+                    <div class="chat-avatar">PR</div>
+                    <div class="chat-info">
+                        <h4>Produção</h4>
+                        <p>Maria: Uniformes prontos</p>
+                        <span class="chat-time">12:15</span>
+                    </div>
+                </div>
+                
+                <div class="chat-item">
+                    <div class="chat-avatar">VD</div>
+                    <div class="chat-info">
+                        <h4>Vendas</h4>
+                        <p>Carlos: Cliente satisfeito!</p>
+                        <span class="chat-time">10:45</span>
+                        <span class="chat-unread">1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-main">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">EQ</div>
+                    <div>
+                        <h3>Equipe Geral</h3>
+                        <span>5 membros online</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-messages">
+                <div class="message received">
+                    <div class="message-avatar">JV</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">João Vendedor</span>
+                            <span class="message-time">14:30</span>
+                        </div>
+                        <p>Pessoal, acabei de finalizar o pedido #001. Cliente muito satisfeito!</p>
+                    </div>
+                </div>
+                
+                <div class="message received">
+                    <div class="message-avatar">MS</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">Maria Supervisora</span>
+                            <span class="message-time">14:32</span>
+                        </div>
+                        <p>Excelente trabalho, João! 👏</p>
+                    </div>
+                </div>
+                
+                <div class="message sent">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">Você</span>
+                            <span class="message-time">14:35</span>
+                        </div>
+                        <p>Parabéns pela dedicação! Vamos manter esse padrão de qualidade.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <div class="input-container">
+                    <input type="text" placeholder="Digite sua mensagem..." id="messageInput">
+                    <button class="btn-send" onclick="enviarMensagem()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

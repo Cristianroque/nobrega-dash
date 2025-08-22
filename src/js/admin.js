@@ -1,0 +1,20 @@
+const IndicatorInicial = document.querySelector("#IndicatorInicial");
+const IndicatorPedidos = document.querySelector("#IndicatorPedidos");
+const IndicatorVendas = document.querySelector("#IndicatorVendas");
+const IndicatorChat = document.querySelector("#IndicatorChat");
+const IndicatorBlog = document.querySelector("#IndicatorBlog");
+const IndicatorUser = document.querySelector("#IndicatorUser");
+const IndicatorLoja = document.querySelector("#IndicatorLoja");
+const IndicatorCaixa = document.querySelector("#IndicatorCaixa");
+const IndicatorOrderConfig = document.querySelector("#IndicatorOrderConfig");
+const IndicatorConfigAdm = document.querySelector("#IndicatorConfigAdm");
+
+if (IndicatorPedidos) IndicatorPedidos.style.display = "none";
+if (IndicatorVendas) IndicatorVendas.style.display = "none";
+if (IndicatorChat) IndicatorChat.style.display = "none";
+if (IndicatorBlog) IndicatorBlog.style.display = "none";
+if (IndicatorUser) IndicatorUser.style.display = "none";
+if (IndicatorLoja) IndicatorLoja.style.display = "none";
+if (IndicatorCaixa) IndicatorCaixa.style.display = "none";
+if (IndicatorOrderConfig) IndicatorOrderConfig.style.display = "none";
+if (IndicatorConfigAdm) IndicatorConfigAdm.style.display = "none";

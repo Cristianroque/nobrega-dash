@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários - Nóbrega Confecções</title>
+    <link rel="stylesheet" href="../css/usuarios.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo-nobrega.svg">
+</head>
+<body>
+    <div class="usuarios-container">
+        <div id="pageHeader" class="page-header" style="flex-direction: row;">
+            <div class="header-content">
+                <h1>Gerenciamento de Usuários</h1>
+                <p>Controle completo dos usuários e seus cargos no sistema Nóbrega Confecções</p>
+            </div>
+            <button class="btn-primary" id="btnNovoUsuario">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Cadastrar novo usuário
+            </button>
+        </div>
+
+        <div id="searchContainer" class="search-container">
+            <div class="search-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Buscar usuários por nome, email ou cargo...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="admin">Admin</button>
+                <button class="filter-btn" data-filter="vendedor">Vendedor</button>
+                <button class="filter-btn" data-filter="supervisor">Supervisor</button>
+                <button class="filter-btn" data-filter="producao">Produção</button>
+                <button class="filter-btn" data-filter="personalizacao">Personalização</button>
+            </div>
+        </div>
+
+        <div id="usuariosTable" class="table-container">
+            <table class="usuarios-table">
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Cargo</th>
+                        <th>Status</th>
+                        <th>Último Acesso</th>
+                        <th>Permissões</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="usuariosTableBody">
+                    <!-- Usuário Admin -->
+                    <tr data-cargo="admin">
+                        <td>
+                            <div class="usuario-info">
+                                <div class="usuario-avatar">AD</div>
+                                <div class="usuario-details">
+                                    <h4>Administrador <span class="cargo-tag">ADMIN</span></h4>
+                                    <span>admin@nobrega.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="cargo-badge cargo-admin">Administrador</span></td>
+                        <td><span class="status-badge status-ativo">Ativo</span></td>
+                        <td>2024-03-28 14:30</td>
+                        <td>
+                            <div class="permissoes-info">
+                                <span class="permissao-item">Acesso Total</span>
+                                <span class="permissao-count">+10 permissões</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit" title="Editar">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-permissions" title="Permissões">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Usuário Vendedor -->
+                    <tr data-cargo="vendedor">
+                        <td>
+                            <div class="usuario-info">
+                                <div class="usuario-avatar">JV</div>
+                                <div class="usuario-details">
+                                    <h4>João Vendedor <span class="cargo-tag">VENDEDOR</span></h4>
+                                    <span>joao.vendedor@nobrega.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="cargo-badge cargo-vendedor">Vendedor</span></td>
+                        <td><span class="status-badge status-ativo">Ativo</span></td>
+                        <td>2024-03-28 09:15</td>
+                        <td>
+                            <div class="permissoes-info">
+                                <span class="permissao-item">Vendas</span>
+                                <span class="permissao-count">+3 permissões</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit" title="Editar">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-permissions" title="Permissões">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-delete" title="Excluir">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Usuário Supervisor -->
+                    <tr data-cargo="supervisor">
+                        <td>
+                            <div class="usuario-info">
+                                <div class="usuario-avatar">MS</div>
+                                <div class="usuario-details">
+                                    <h4>Maria Supervisora <span class="cargo-tag">SUPERVISOR</span></h4>
+                                    <span>maria.supervisor@nobrega.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="cargo-badge cargo-supervisor">Supervisor</span></td>
+                        <td><span class="status-badge status-ativo">Ativo</span></td>
+                        <td>2024-03-27 16:45</td>
+                        <td>
+                            <div class="permissoes-info">
+                                <span class="permissao-item">Supervisão</span>
+                                <span class="permissao-count">+5 permissões</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit" title="Editar">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-permissions" title="Permissões">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-delete" title="Excluir">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Usuário Produção -->
+                    <tr data-cargo="producao">
+                        <td>
+                            <div class="usuario-info">
+                                <div class="usuario-avatar">CP</div>
+                                <div class="usuario-details">
+                                    <h4>Carlos Produção <span class="cargo-tag">PRODUÇÃO</span></h4>
+                                    <span>carlos.producao@nobrega.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="cargo-badge cargo-producao">Produção</span></td>
+                        <td><span class="status-badge status-inativo">Inativo</span></td>
+                        <td>2024-03-25 08:30</td>
+                        <td>
+                            <div class="permissoes-info">
+                                <span class="permissao-item">Produção</span>
+                                <span class="permissao-count">+4 permissões</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit" title="Editar">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-permissions" title="Permissões">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-delete" title="Excluir">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Usuário Personalização -->
+                    <tr data-cargo="personalizacao">
+                        <td>
+                            <div class="usuario-info">
+                                <div class="usuario-avatar">AP</div>
+                                <div class="usuario-details">
+                                    <h4>Ana Personalização <span class="cargo-tag">PERSONALIZAÇÃO</span></h4>
+                                    <span>ana.personalizacao@nobrega.com</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="cargo-badge cargo-personalizacao">Personalização</span></td>
+                        <td><span class="status-badge status-ativo">Ativo</span></td>
+                        <td>2024-03-28 11:20</td>
+                        <td>
+                            <div class="permissoes-info">
+                                <span class="permissao-item">Personalização</span>
+                                <span class="permissao-count">+3 permissões</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit" title="Editar">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-permissions" title="Permissões">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="btn-delete" title="Excluir">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 6h18m-2 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Modals will be added here -->
+        <div id="usuarioModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Novo Usuário</h2>
+                    <button class="close-btn" id="closeModal">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <form class="usuario-form" id="usuarioForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cargo">Cargo</label>
+                            <select id="cargo" name="cargo" required>
+                                <option value="">Selecione um cargo</option>
+                                <option value="admin">Administrador</option>
+                                <option value="vendedor">Vendedor</option>
+                                <option value="supervisor">Supervisor</option>
+                                <option value="producao">Produção</option>
+                                <option value="personalizacao">Personalização</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select id="status" name="status" required>
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="senha">Senha</label>
+                            <input type="password" id="senha" name="senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmarSenha">Confirmar Senha</label>
+                            <input type="password" id="confirmarSenha" name="confirmarSenha" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/usuarios.js"></script>
+</body>
+</html>
